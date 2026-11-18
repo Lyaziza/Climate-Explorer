@@ -1,4 +1,4 @@
-# Climate Explorer
+``# Climate Explorer
 
 Climate Explorer is a web application for exploring historical climate data using the NASA POWER API.
 
@@ -53,3 +53,15 @@ https://power.larc.nasa.gov/
 ## Author
 
 Lyaziza
+
+
+## Screenshots
+
+### Home Page
+![Home Page](public/screenshots/home.png)
+
+### Climate Results
+![Climate Results](public/screenshots/results.png)
+
+### Error Handling (500)
+![Server Error 500](public/screenshots/error-500.png)
