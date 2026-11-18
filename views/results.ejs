@@ -1,0 +1,22 @@
+<%- include('partials/header', { title }) %>
+<section class="results-top">
+  <a class="back-link" href="/">← New search</a>
+  <div class="eyebrow">CLIMATE REPORT · NASA POWER</div>
+  <h1>Your climate snapshot</h1>
+  <p class="hero-copy">Coordinates <strong><%= climate.latitude %>, <%= climate.longitude %></strong> · <%= climate.startDate %> to <%= climate.endDate %></p>
+</section>
+<section class="stats-grid">
+  <article class="stat-card"><span>AVERAGE TEMPERATURE</span><strong><%= climate.stats.avgTemperature === null ? '—' : climate.stats.avgTemperature.toFixed(1) + '°C' %></strong><small>At 2 metres above ground</small></article>
+  <article class="stat-card"><span>TOTAL PRECIPITATION</span><strong><%= climate.stats.totalPrecipitation.toFixed(1) %><small class="unit"> mm</small></strong><small>Accumulated over selected days</small></article>
+  <article class="stat-card"><span>AVERAGE HUMIDITY</span><strong><%= climate.stats.avgHumidity === null ? '—' : climate.stats.avgHumidity.toFixed(1) + '%' %></strong><small>Relative humidity</small></article>
+  <article class="stat-card"><span>AVERAGE WIND SPEED</span><strong><%= climate.stats.avgWind === null ? '—' : climate.stats.avgWind.toFixed(1) + ' m/s' %></strong><small>At 2 metres above ground</small></article>
+</section>
+<section class="data-panel">
+  <div class="panel-heading"><div><span class="eyebrow">DAY BY DAY</span><h2>Daily climate data</h2></div><span class="step"><%= climate.records.length %> DAYS</span></div>
+  <div class="table-wrap"><table><thead><tr><th>Date</th><th>Temperature</th><th>Precipitation</th><th>Humidity</th><th>Wind</th></tr></thead><tbody>
+  <% climate.records.forEach(row => { %><tr><td><%= row.date %></td><td><%= row.temperature === -999 || row.temperature == null ? '—' : row.temperature.toFixed(1) + ' °C' %></td><td><%= row.precipitation === -999 || row.precipitation == null ? '—' : row.precipitation.toFixed(1) + ' mm' %></td><td><%= row.humidity === -999 || row.humidity == null ? '—' : row.humidity.toFixed(0) + '%' %></td><td><%= row.wind === -999 || row.wind == null ? '—' : row.wind.toFixed(1) + ' m/s' %></td></tr><% }) %>
+  </tbody></table></div>
+  <p class="table-note">Missing values are shown as em dashes. Values are provided by NASA POWER and may be revised by the source.</p>
+</section>
+<section class="disclaimer"><strong>About this data</strong><p>NASA POWER provides analysis-ready daily meteorological data. These are historical data products, not real-time conditions or a forecast. The selected coordinates represent a grid point in the NASA POWER dataset.</p><a href="https://power.larc.nasa.gov/docs/services/api/temporal/daily/" target="_blank" rel="noreferrer">Read API documentation ↗</a></section>
+<%- include('partials/footer') %>

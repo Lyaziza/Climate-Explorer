@@ -1,0 +1,30 @@
+<%- include('partials/header', { title }) %>
+<section class="hero">
+  <div class="eyebrow"><span class="pulse"></span> NASA POWER · DAILY DATA</div>
+  <h1>Understand the climate<br><em>where you are.</em></h1>
+  <p class="hero-copy">Explore daily temperature, precipitation, humidity and wind data for any point on Earth.</p>
+  <div class="source-note">Historical observations · Global coverage · No API key required</div>
+</section>
+<section class="search-panel">
+  <div class="panel-heading"><div><span class="eyebrow">YOUR LOCATION</span><h2>Build your climate report</h2></div><span class="step">01 / 02</span></div>
+  <% if (error) { %><div class="alert"><%= error %></div><% } %>
+  <form action="/search" method="POST" class="search-form">
+    <div class="field-grid">
+      <label>Latitude <input name="latitude" type="number" step="any" min="-90" max="90" placeholder="e.g. 51.1694" value="<%= values.latitude || values.lat || '' %>" required><small>−90 to 90</small></label>
+      <label>Longitude <input name="longitude" type="number" step="any" min="-180" max="180" placeholder="e.g. 71.4491" value="<%= values.longitude || values.lon || '' %>" required><small>−180 to 180</small></label>
+    </div>
+    <div class="field-grid">
+      <label>Start date <input name="startDate" type="date" value="<%= values.startDate || values.start || '2024-01-01' %>" required></label>
+      <label>End date <input name="endDate" type="date" value="<%= values.endDate || values.end || '2024-01-31' %>" required></label>
+    </div>
+    <button class="button" type="submit">Explore climate data <span>→</span></button>
+    <p class="form-hint">Choose a period of up to 365 days. NASA POWER daily data begins in 1981.</p>
+  </form>
+</section>
+<section class="popular-strip"><div><span class="eyebrow">NEED A STARTING POINT?</span><h2>Explore a familiar place</h2></div><a class="text-link" href="/popular">View all locations →</a></section>
+<div class="mini-grid">
+  <a class="mini-card" href="/results?lat=51.1694&lon=71.4491&start=2024-01-01&end=2024-01-31"><strong>Astana</strong><span>51.1694° N · 71.4491° E</span></a>
+  <a class="mini-card" href="/results?lat=43.2389&lon=76.8897&start=2024-01-01&end=2024-01-31"><strong>Almaty</strong><span>43.2389° N · 76.8897° E</span></a>
+  <a class="mini-card" href="/results?lat=51.5072&lon=-0.1276&start=2024-01-01&end=2024-01-31"><strong>London</strong><span>51.5072° N · 0.1276° W</span></a>
+</div>
+<%- include('partials/footer') %>

@@ -1,0 +1,8 @@
+{
+  "name": "climate-explorer",
+  "version": "1.0.0",
+  "description": "Climate Explorer - NASA POWER daily weather dashboard",
+  "type": "module",
+  "scripts": { "start": "node app.js", "dev": "node --watch app.js" },
+  "dependencies": { "axios": "^1.7.9", "dotenv": "^16.4.7", "ejs": "^3.1.10", "express": "^4.21.2" }
+}

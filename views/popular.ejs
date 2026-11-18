@@ -1,0 +1,8 @@
+<%- include('partials/header', { title }) %>
+<section class="results-top"><a class="back-link" href="/">← Home</a><div class="eyebrow">QUICK START</div><h1>Popular locations</h1><p class="hero-copy">Choose a preset coordinate to explore its climate history.</p></section>
+<div class="location-grid">
+<% locations.forEach(location => { %>
+  <a class="location-card" href="/results?lat=<%= location.lat %>&lon=<%= location.lon %>&start=2024-01-01&end=2024-01-31"><span class="eyebrow">PRESET LOCATION</span><h2><%= location.name %></h2><p><%= location.lat %>, <%= location.lon %></p><span class="text-link">Explore data →</span></a>
+<% }) %>
+</div>
+<%- include('partials/footer') %>
